@@ -7,3 +7,10 @@ Config = namedtuple('Config', ['consumer_key',
                                'authorize_url',
                                'api_version',
                                'search_endpoint', ])
+
+
+RequestToken = namedtuple("RequestToken",  ['oauth_token',
+                                            'oauth_token_secret',
+                                            'oauth_callback_confirmed'])
+
+

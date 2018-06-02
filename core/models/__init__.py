@@ -1,2 +1,1 @@
-from .models import Config
-from .config import read_config
+from .models import Config, RequestToken

@@ -3,11 +3,12 @@ import yaml
 
 from .models import Config
 
+
 def _read_yaml_file(filename, cls):
     core_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(core_dir, "..", filename)
 
-    with open(filepath, 'r', encoding="UTF-8") as f:
+    with open(file_path, 'r', encoding="UTF-8") as f:
         config = yaml.load(f)
         return cls(**config)
 
@@ -31,4 +32,5 @@ def read_config():
         api_version: '1.1'
         search_endpoint: ''
         """)
+
         raise
