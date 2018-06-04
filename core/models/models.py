@@ -14,3 +14,8 @@ RequestToken = namedtuple("RequestToken",  ['oauth_token',
                                             'oauth_callback_confirmed'])
 
 
+RequestAuth = namedtuple('RequestAuth', ['oauth_token',
+                                         'oauth_token_secret',
+                                         'user_id',
+                                         'screen_name',
+                                         'x_auth_expires', ])

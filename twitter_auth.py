@@ -15,6 +15,7 @@ client = None
 consumer = None
 req_token = None
 
+
 def get_oauth_token(config):
     global consumer
     global client
@@ -26,8 +27,8 @@ def get_oauth_token(config):
 
     resp, content = client.request(config.request_token_url, 'GET')
 
-    if resp["status"] != 200:
-        raise Exception("Invalid response {}".format(resp['status']))
+    if resp["status"] != "200":
+        raise Exception("Invalid respon se {}".format(resp['status']))
 
     request_token = dict(parse_qsl(content.decode("utf-8")))
 
@@ -69,3 +70,7 @@ def callback():
         req_auth.write(file_content)
 
     return "All set! You can close the browser window and stop the server"
+
+
+if __name__ == "__main__":
+    app.run(host='localhost', port=3000)
