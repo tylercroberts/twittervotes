@@ -36,9 +36,10 @@ def read_config():
 
         raise
 
+
 def read_reqauth():
     try:
-        return _read_yaml_file(".twitterauth".RequestAuth)
+        return _read_yaml_file(".twitterauth", RequestAuth)
     except IOError as e:
         print(('It seems like you have not authorized the application.\n'
                'In order to use your twitter data, please run the '

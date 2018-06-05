@@ -8,6 +8,7 @@ import requests
 from .config import read_config
 from .config import read_reqauth
 
+
 def prepare_request(url, url_params):
     reqconfig = read_reqauth()
     config = read_config()
@@ -38,4 +39,25 @@ def prepare_request(url, url_params):
     signature_method = oauth.SignatureMethod_HMAC_SHA1()
     req.sign_request(signature_method, consumer, token)
 
-    return req.to_url
+    return req.to_url()
+
+def execute_request(hashtag):
+    config = read_config()
+
+    if hashtag.refresh_url:
+        refresh_url = hashtag.refresh_url[1:]
+        url_params = dict(parse_qsl(refresh_url))
+
+    else:
+        url_params = {
+            "q": f'#{hashtag.name}',
+            "result_type": "mixed"
+        }
+
+    url = prepare_request(config.search_endpoint, url_params)
+
+    data = requests.get(url)
+
+    results = json.loads(data.text)
+
+    return (hashtag, results, )
